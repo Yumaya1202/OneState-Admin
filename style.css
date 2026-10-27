@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;800&display=swap');
+
+:root {
+  --bg: #0b1120;
+  --panel: #111b2c;
+  --border: #26354c;
+  --text: #edf3ff;
+  --muted: #8999b2;
+  --blue: #60a5fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.sidebar {
+  position: fixed;
+  width: 240px;
+  height: 100vh;
+  padding: 28px 18px;
+  background: #0d1525;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar h2 {
+  font-size: 19px;
+  letter-spacing: 2px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 35px;
+}
+
+.nav {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin-bottom: 8px;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #aab8ce;
+  cursor: pointer;
+}
+
+.nav:hover,
+.nav.active {
+  background: #172b49;
+  border-color: #2c4d7b;
+  color: var(--blue);
+}
+
+main {
+  margin-left: 240px;
+  padding: 0 35px 40px;
+}
+
+header {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.status {
+  color: #34d399;
+}
+
+#rules,
+#guide {
+  padding-top: 35px;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+h1 {
+  font-size: 34px;
+  margin: 10px 0;
+}
+
+h1 span {
+  color: var(--blue);
+}
+
+.description {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin: 28px 0;
+}
+
+.stat {
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.stat small {
+  display: block;
+  color: var(--muted);
+}
+
+.stat strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+#search {
+  width: 100%;
+  padding: 15px;
+  color: var(--text);
+  background: #101a2b;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+
+#search:focus {
+  border-color: var(--blue);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.filters button {
+  padding: 8px 13px;
+  color: #aab8ce;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.filters button.selected,
+.filters button:hover {
+  color: #a8d0ff;
+  background: #1d3d69;
+  border-color: #3b6ba8;
+}
+
+#result-count {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px;
+  margin: 10px 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.rule:hover {
+  border-color: #42638d;
+}
+
+.rule-code {
+  display: inline-block;
+  min-width: 55px;
+  margin-right: 12px;
+  padding: 6px;
+  text-align: center;
+  border-radius: 5px;
+  background: #27334a;
+  color: #f5d778;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rule-name {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.rule-en {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.punishment {
+  color: #d9e7fa;
+  background: #1a273b;
+  border: 1px solid #30415b;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.note {
+  color: #f4c66f;
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+@media (max-width: 760px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 12px;
+  }
+
+  .sidebar h2 {
+    margin: 0 0 5px;
+  }
+
+  .subtitle {
+    margin: 0 0 12px;
+  }
+
+  .nav {
+    display: inline-block;
+    width: auto;
+    margin: 0 5px 0 0;
+  }
+
+  main {
+    margin-left: 0;
+    padding: 0 15px 30px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .rule {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .punishment {
+    white-space: normal;
+  }
+}
