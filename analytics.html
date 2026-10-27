@@ -166,7 +166,7 @@ document.getElementById("weekSelect").addEventListener("change", e => {
 
 const reasonNames=["対応態度が悪かった","問題が解決されなかった","十分な回答が得られなかった"];
 const fmt=(n,d=0)=>Number(n).toLocaleString("ja-JP",{minimumFractionDigits:d,maximumFractionDigits:d});
-const all=currentWeek.staff;
+const all=selectedWeek.staff;
 const totalCount=all.reduce((s,x)=>s+x.count,0);
 const totalLow=all.reduce((s,x)=>s+x.low,0);
 const totalHours=all.reduce((s,x)=>s+x.hours,0);
