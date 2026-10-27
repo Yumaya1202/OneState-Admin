@@ -1,1 +1,141 @@
-html     <a href="analytics.html">パフォーマンス分析</a>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ONE STATE | パフォーマンス分析</title>
+<style>
+:root{--navy:#101b33;--navy2:#192845;--blue:#3978f6;--bg:#f3f6fb;--card:#fff;--text:#182338;--muted:#77839a;--line:#e6ebf3;--green:#17a673;--red:#e35c68;--amber:#e7a33e}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;background:var(--bg);color:var(--text)}
+.app{display:flex;min-height:100vh}.sidebar{width:245px;background:var(--navy);color:#fff;padding:28px 17px;flex-shrink:0}.brand{font-size:21px;font-weight:850;letter-spacing:1.7px;padding:0 12px}.subtitle{font-size:10px;letter-spacing:2px;color:#93a2bd;margin:7px 12px 32px}.navlabel{font-size:10px;letter-spacing:1.5px;color:#74839e;margin:25px 12px 10px}.nav{display:block;width:100%;text-align:left;border:0;background:transparent;color:#bdc8da;padding:13px 14px;border-radius:9px;margin:4px 0;font-size:13px;cursor:pointer}.nav:hover,.nav.active{background:#263957;color:#fff}.nav.active{box-shadow:inset 3px 0 #6c9bff}.sidebar-foot{font-size:11px;color:#73829c;margin:45px 12px 0;line-height:1.7}
+.main{flex:1;min-width:0;padding:30px clamp(18px,3vw,42px) 45px}.topline{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:25px}.eyebrow{font-size:11px;letter-spacing:1.7px;color:var(--blue);font-weight:750}.h1{font-size:27px;letter-spacing:-.5px;margin:6px 0 5px}.lead{font-size:12px;color:var(--muted)}.period{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:12px;color:#526078;white-space:nowrap}
+.section-title{font-size:15px;font-weight:800;margin:27px 0 13px;display:flex;justify-content:space-between;align-items:center;gap:12px}.section-title small{font-size:11px;color:var(--muted);font-weight:500}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:0 3px 12px rgba(24,43,78,.025);min-width:0}.kpi-label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}.dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}.kpi-value{font-size:29px;font-weight:800;letter-spacing:-.8px;margin:13px 0 5px}.kpi-note{font-size:11px;color:var(--muted)}.twocol{grid-template-columns:1.15fr .85fr}.servercards{grid-template-columns:repeat(2,minmax(0,1fr))}.server-name{font-size:13px;font-weight:800}.server-rate{font-size:25px;font-weight:800;margin:12px 0 5px}.bar{height:8px;border-radius:20px;background:#edf1f7;overflow:hidden;margin:13px 0 8px}.bar>span{display:block;height:100%;border-radius:20px;background:var(--blue)}.smallmuted{font-size:11px;color:var(--muted)}.chart{display:flex;align-items:flex-end;gap:12px;height:185px;padding:18px 5px 0;border-bottom:1px solid var(--line)}.barcol{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px}.barvalue{font-size:10px;color:#64718a}.chartbar{width:min(36px,70%);min-height:3px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#6f9cff,#3978f6)}.barlabel{font-size:10px;color:var(--muted);white-space:nowrap}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:#fff}table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}th{background:#f8faff;color:#68758c;font-size:10px;text-align:left;letter-spacing:.3px;padding:13px 14px;font-weight:750;border-bottom:1px solid var(--line)}td{padding:12px 14px;border-bottom:1px solid #eef1f6}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#f8faff}.rank{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:7px;background:#edf3ff;color:#3869d7;font-weight:800}.pill{display:inline-block;border-radius:20px;padding:4px 8px;font-size:10px;font-weight:700;background:#edf8f3;color:#12835c}.pill.warn{background:#fff0f0;color:#c54a58}.pill.mid{background:#fff6e8;color:#a66a13}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.control,button.action{border:1px solid var(--line);background:#fff;border-radius:8px;padding:9px 11px;font-size:12px;color:#4f5c72}button.action{cursor:pointer;font-weight:700}.action.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.reason-list{display:grid;gap:15px}.reason-row{display:grid;grid-template-columns:minmax(150px,1fr) 2fr 38px;gap:12px;align-items:center;font-size:12px}.reason-track{height:9px;background:#edf1f7;border-radius:20px;overflow:hidden}.reason-track span{display:block;height:100%;background:#e46b75;border-radius:20px}.note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}.empty{padding:25px;text-align:center;color:var(--muted)}.hidden{display:none!important}
+@media(max-width:1050px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.twocol{grid-template-columns:1fr}.sidebar{width:210px}}
+@media(max-width:700px){.app{display:block}.sidebar{width:100%;padding:18px 14px}.brand{font-size:18px}.subtitle{margin-bottom:14px}.sidebar nav{display:flex;gap:5px;overflow:auto}.navlabel,.sidebar-foot{display:none}.nav{white-space:nowrap;width:auto;flex:1;padding:10px 9px;font-size:11px}.main{padding:22px 13px}.topline{align-items:flex-start;flex-direction:column}.h1{font-size:23px}.kpis{gap:9px}.card{padding:14px}.kpi-value{font-size:24px}.servercards{grid-template-columns:1fr 1fr}.reason-row{grid-template-columns:1fr 1fr 30px;gap:7px}.reason-row span:first-child{font-size:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">ONE STATE</div>
+  <div class="subtitle">CHILLBASE STAFF</div>
+  <div class="navlabel">WORKSPACE</div>
+  <nav>
+    <button class="nav" onclick="location.href='index.html'">▤　ルール一覧</button>
+    <button class="nav" onclick="location.href='index.html'">☷　対応方法一覧</button>
+    <button class="nav active" onclick="location.href='analytics.html'">▥　パフォーマンス分析</button>
+  </nav>
+  <div class="sidebar-foot">STAFF PERFORMANCE<br>Weekly analytics dashboard</div>
+</aside>
+<main class="main">
+  <header class="topline">
+    <div><div class="eyebrow">PERFORMANCE OVERVIEW</div><h1 class="h1">パフォーマンス分析</h1><div class="lead">スタッフの活動実績とサーバー全体の傾向を確認</div></div>
+    <div class="period">集計期間　<strong>2026/10/18 — 10/25</strong></div>
+  </header>
+  <div class="section-title">全体サマリー <small>2026年10月18日〜10月25日</small></div>
+  <section class="grid kpis" id="kpis"></section>
+  <div class="section-title">サーバー比較 <small>ヘルプ取得率・対応実績</small></div>
+  <section class="grid servercards" id="servers"></section>
+  <section class="grid twocol">
+    <div>
+      <div class="section-title">評価分布 <small>スタッフデータの合計</small></div>
+      <div class="card"><div id="ratingChart" class="chart"></div><div class="note">★5〜★1は送信された列順を維持して集計。評価なしは別枠。</div></div>
+    </div>
+    <div>
+      <div class="section-title">低評価理由 <small>理由別の件数</small></div>
+      <div class="card"><div id="reasons" class="reason-list"></div><div class="note">低評価理由の3項目を指定された正式表記で表示。</div></div>
+    </div>
+  </section>
+  <div class="section-title">スタッフランキング <small>検索・並べ替えに対応</small></div>
+  <div class="card" style="margin-bottom:12px">
+    <div class="toolbar">
+      <input class="control" id="search" placeholder="スタッフ名で検索…" aria-label="スタッフ名で検索">
+      <select class="control" id="serverFilter" aria-label="サーバーで絞り込み"><option value="all">全サーバー</option><option>Lomita JP</option><option>Bell JP</option></select>
+      <select class="control" id="sort" aria-label="並べ替え"><option value="count">対応数が多い順</option><option value="rating">平均評価が高い順</option><option value="low">低評価率が低い順</option><option value="hours">活動時間が長い順</option></select>
+      <button class="action primary" id="csv">CSVをダウンロード</button>
+    </div>
+  </div>
+  <div class="tablewrap"><table><thead><tr><th>順位</th><th>サーバー</th><th>スタッフ名</th><th>活動時間</th><th>★5</th><th>★4</th><th>★3</th><th>★2</th><th>★1</th><th>評価なし</th><th>対応数</th><th>低評価数</th><th>平均評価</th><th>低評価率</th></tr></thead><tbody id="staffRows"></tbody></table></div>
+  <div class="note">※ 元データの値をそのまま掲載。スタッフ名が同じでもサーバーが異なる場合は別の記録として扱います。ヘルプ取得率はサーバー全体の指標です。</div>
+  <div class="section-title">週別データについて</div>
+  <div class="card">
+    <div style="font-weight:750;font-size:13px">週ごとの記録を追加できる構成</div>
+    <p class="note">現在表示しているのは2026/10/18〜10/25のデータです。過去週を比較するには、その週のデータを追加する必要があります。このページは静的なHTMLなので、入力したデータを自動で共有・永続保存する機能はまだありません。新しい週の追加は、データ配列への追加または保存先の実装が必要です。</p>
+  </div>
+</main>
+</div>
+<script>
+const currentWeek = {
+  start:"2026-10-18", end:"2026-10-25",
+  helpRates:{"Lomita JP":87.63,"Bell JP":76.12},
+  staff:[
+    {server:"Lomita JP",name:"Tryout Mint",hours:26.6,ratings:[122,1,1,0,15],none:7,reasons:[8,7,1],count:146,low:16,avg:4.55,lowRate:11.00},
+    {server:"Lomita JP",name:"Helper Chappy",hours:13.6,ratings:[66,0,0,2,7],none:10,reasons:[5,4,0],count:85,low:9,avg:4.55,lowRate:10.60},
+    {server:"Lomita JP",name:"Helper Rakuu",hours:18.3,ratings:[63,0,0,0,11],none:7,reasons:[1,10,0],count:81,low:11,avg:4.41,lowRate:13.60},
+    {server:"Lomita JP",name:"Helper Marybalk",hours:30.5,ratings:[36,0,1,1,10],none:5,reasons:[6,5,1],count:53,low:12,avg:4.06,lowRate:22.60},
+    {server:"Lomita JP",name:"Helper Nest",hours:9.5,ratings:[38,0,0,0,4],none:8,reasons:[1,2,1],count:50,low:4,avg:4.62,lowRate:8.00},
+    {server:"Lomita JP",name:"Tryout Ganesha",hours:13.2,ratings:[30,0,1,0,5],none:6,reasons:[2,3,1],count:42,low:6,avg:4.39,lowRate:14.30},
+    {server:"Lomita JP",name:"Tryout Jinbe",hours:9.2,ratings:[26,0,0,0,3],none:5,reasons:[1,1,1],count:34,low:3,avg:4.59,lowRate:8.80},
+    {server:"Lomita JP",name:"Tryout Random",hours:11.3,ratings:[25,1,0,0,2],none:4,reasons:[0,2,0],count:32,low:2,avg:4.68,lowRate:6.30},
+    {server:"Lomita JP",name:"Helper Falcon",hours:12.8,ratings:[21,0,1,0,4],none:1,reasons:[1,3,1],count:27,low:5,avg:4.31,lowRate:18.50},
+    {server:"Lomita JP",name:"Helper Division",hours:7.4,ratings:[21,0,0,0,3],none:1,reasons:[0,3,0],count:25,low:3,avg:4.50,lowRate:12.00},
+    {server:"Lomita JP",name:"Moderator Lem",hours:9.1,ratings:[12,0,0,0,3],none:4,reasons:[1,2,0],count:19,low:3,avg:4.20,lowRate:15.80},
+    {server:"Lomita JP",name:"Moderator Milk",hours:4.0,ratings:[6,0,0,0,1],none:2,reasons:[0,0,0],count:9,low:1,avg:4.43,lowRate:11.10},
+    {server:"Lomita JP",name:"Responsible Ram",hours:2.2,ratings:[7,0,0,0,1],none:0,reasons:[1,0,1],count:8,low:1,avg:4.50,lowRate:12.50},
+    {server:"Lomita JP",name:"Moderator Knight",hours:15.4,ratings:[5,0,0,0,1],none:0,reasons:[0,1,0],count:6,low:1,avg:4.33,lowRate:16.70},
+    {server:"Lomita JP",name:"Moderator Neko",hours:11.3,ratings:[2,0,0,1,2],none:2,reasons:[1,1,0],count:6,low:2,avg:3.00,lowRate:33.30},
+    {server:"Lomita JP",name:"Moderator Skully",hours:6.9,ratings:[2,0,0,0,0],none:0,reasons:[0,0,0],count:2,low:0,avg:5.00,lowRate:0.00},
+    {server:"Lomita JP",name:"Responsible Nem",hours:3.6,ratings:[1,0,0,0,0],none:0,reasons:[0,0,0],count:1,low:0,avg:5.00,lowRate:0.00},
+    {server:"Bell JP",name:"Helper Mutuu",hours:37.0,ratings:[32,0,1,0,3],none:4,reasons:[2,2,0],count:40,low:4,avg:4.61,lowRate:10.00},
+    {server:"Bell JP",name:"Moderator China",hours:17.2,ratings:[28,0,0,0,0],none:2,reasons:[0,1,0],count:31,low:1,avg:4.93,lowRate:3.20},
+    {server:"Bell JP",name:"Helper Koppu",hours:13.1,ratings:[19,0,0,0,1],none:0,reasons:[0,0,0],count:20,low:1,avg:4.80,lowRate:5.00},
+    {server:"Bell JP",name:"Helper Clean",hours:9.1,ratings:[14,0,0,1,3],none:2,reasons:[1,1,1],count:19,low:3,avg:4.29,lowRate:15.80},
+    {server:"Bell JP",name:"Moderator Mike",hours:12.6,ratings:[12,0,1,1,3],none:2,reasons:[3,2,0],count:19,low:5,avg:4.00,lowRate:26.30},
+    {server:"Bell JP",name:"Moderator Luxiel",hours:14.4,ratings:[12,0,0,0,1],none:4,reasons:[1,0,0],count:17,low:1,avg:4.69,lowRate:5.90},
+    {server:"Bell JP",name:"Administrator Mash",hours:7.6,ratings:[7,0,0,0,4],none:1,reasons:[0,4,0],count:12,low:4,avg:3.55,lowRate:33.30},
+    {server:"Bell JP",name:"Tryout Star",hours:4.7,ratings:[8,0,0,0,0],none:1,reasons:[0,0,0],count:9,low:0,avg:5.00,lowRate:0.00},
+    {server:"Bell JP",name:"Responsible Ram",hours:5.3,ratings:[1,0,0,0,0],none:0,reasons:[0,0,1],count:1,low:0,avg:5.00,lowRate:0.00}
+  ]
+};
+// Keep weeks separately so later weeks can be added without overwriting this record.
+const weeklyData = [currentWeek];
+const reasonNames=["対応態度が悪かった","問題が解決されなかった","十分な回答が得られなかった"];
+const fmt=(n,d=0)=>Number(n).toLocaleString("ja-JP",{minimumFractionDigits:d,maximumFractionDigits:d});
+const all=currentWeek.staff;
+const totalCount=all.reduce((s,x)=>s+x.count,0);
+const totalLow=all.reduce((s,x)=>s+x.low,0);
+const totalHours=all.reduce((s,x)=>s+x.hours,0);
+const ratings=[0,1,2,3,4].map(i=>all.reduce((s,x)=>s+x.ratings[i],0));
+const noRating=all.reduce((s,x)=>s+x.none,0);
+const avg=all.reduce((s,x)=>s+x.avg*x.count,0)/totalCount;
+const kpiData=[
+ ["総対応数",fmt(totalCount),"スタッフデータの合計","●"],
+ ["平均評価",fmt(avg,2)+" / 5","対応数で加重した参考値","★"],
+ ["低評価数",fmt(totalLow),"スタッフ別低評価数の合計","!"],
+ ["活動時間",fmt(totalHours,1)+" h","スタッフ活動時間の合計","◷"]
+];
+document.getElementById("kpis").innerHTML=kpiData.map((k,i)=>`<div class="card"><div class="kpi-label"><span class="dot" style="background:${["#3978f6","#17a673","#e35c68","#e7a33e"][i]}"></span>${k[0]}</div><div class="kpi-value">${k[1]}</div><div class="kpi-note">${k[2]}</div></div>`).join("");
+document.getElementById("servers").innerHTML=Object.entries(currentWeek.helpRates).map(([name,rate])=>{let rows=all.filter(x=>x.server===name),count=rows.reduce((s,x)=>s+x.count,0),low=rows.reduce((s,x)=>s+x.low,0);return `<div class="card"><div class="server-name">${name}</div><div class="smallmuted">ヘルプ取得率</div><div class="server-rate">${fmt(rate,2)}%</div><div class="bar"><span style="width:${rate}%"></span></div><div class="smallmuted">対応数 ${fmt(count)}件　/　低評価 ${fmt(low)}件</div></div>`}).join("");
+const ratingLabels=["★5","★4","★3","★2","★1","評価なし"],ratingVals=[...ratings,noRating],maxRating=Math.max(...ratingVals);
+document.getElementById("ratingChart").innerHTML=ratingVals.map((v,i)=>`<div class="barcol"><div class="barvalue">${fmt(v)}</div><div class="chartbar" style="height:${Math.max(3,v/maxRating*125)}px;${i===4?"background:linear-gradient(180deg,#f18b92,#e35c68)":i===5?"background:#aab4c5":""}"></div><div class="barlabel">${ratingLabels[i]}</div></div>`).join("");
+const reasonTotals=[0,1,2].map(i=>all.reduce((s,x)=>s+(x.reasons[i]||0),0));
+const reasonMax=Math.max(1,...reasonTotals);
+document.getElementById("reasons").innerHTML=reasonNames.map((n,i)=>`<div class="reason-row"><span>${n}</span><div class="reason-track"><span style="width:${reasonTotals[i]/reasonMax*100}%"></span></div><strong>${fmt(reasonTotals[i])}</strong></div>`).join("");
+function renderTable(){
+ let list=all.filter(x=>(document.getElementById("serverFilter").value==="all"||x.server===document.getElementById("serverFilter").value)&&x.name.toLowerCase().includes(document.getElementById("search").value.trim().toLowerCase()));
+ const sort=document.getElementById("sort").value;
+ list.sort((a,b)=>sort==="rating"?b.avg-a.avg:sort==="low"?a.lowRate-b.lowRate:sort==="hours"?b.hours-a.hours:b.count-a.count);
+ document.getElementById("staffRows").innerHTML=list.map((x,i)=>`<tr><td><span class="rank">${i+1}</span></td><td>${x.server}</td><td><strong>${x.name}</strong></td><td>${fmt(x.hours,1)} h</td>${x.ratings.map(v=>`<td>${fmt(v)}</td>`).join("")}<td>${fmt(x.none)}</td><td>${fmt(x.count)}</td><td>${fmt(x.low)}</td><td><strong>${fmt(x.avg,2)}</strong></td><td><span class="pill ${x.lowRate>=20?"warn":x.lowRate>=12?"mid":""}">${fmt(x.lowRate,2)}%</span></td></tr>`).join("")||'<tr><td colspan="14" class="empty">該当するスタッフはいません</td></tr>';
+}
+["search","serverFilter","sort"].forEach(id=>document.getElementById(id).addEventListener(id==="search"?"input":"change",renderTable));
+document.getElementById("csv").addEventListener("click",()=>{
+ const headers=["集計開始日","集計終了日","サーバー","管理者名","活動時間","5★","4★","3★","2★","1★","評価なし","対応数","低評価数","平均評価","低評価率","対応態度が悪かった","問題が解決されなかった","十分な回答が得られなかった"];
+ const rows=all.map(x=>[currentWeek.start,currentWeek.end,x.server,x.name,x.hours,...x.ratings,x.none,x.count,x.low,x.avg,x.lowRate,...x.reasons]);
+ const csv=[headers,...rows].map(row=>row.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\r\n");
+ const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});
+ const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="one-state-performance-2026-10-18_2026-10-25.csv";a.click();URL.revokeObjectURL(a.href);
+});
+renderTable();
+</script>
+</body>
+</html>
