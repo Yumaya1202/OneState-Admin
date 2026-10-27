@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ONE STATE | Staff Manual</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>ONE STATE</h2>
+    <p class="subtitle">CHILLBASE STAFF</p>
+    <button class="nav active" data-page="rules">ルール一覧</button>
+    <button class="nav" data-page="guide">対応方法一覧</button>
+  </aside>
+
+  <main>
+    <header>
+      <span>ONE STATE / STAFF MANUAL</span>
+      <span class="status">● SYSTEM ONLINE</span>
+    </header>
+
+    <section id="rules">
+      <p class="eyebrow">ADMIN KNOWLEDGE BASE</p>
+      <h1>ルール一覧<span>.</span></h1>
+      <p class="description">管理者向けルール・処罰基準データベース</p>
+
+      <div class="stats">
+        <div class="stat">
+          <small>登録ルール</small>
+          <strong id="total">42</strong>
+        </div>
+        <div class="stat">
+          <small>カテゴリ</small>
+          <strong>5</strong>
+        </div>
+        <div class="stat">
+          <small>検索システム</small>
+          <strong>ACTIVE</strong>
+        </div>
+      </div>
+
+      <input id="search" type="text"
+        placeholder="ルールコード・名称・処罰内容で検索...">
+
+      <div class="filters">
+        <button data-category="all" class="selected">すべて</button>
+        <button data-category="RP">RP</button>
+        <button data-category="Name">名前</button>
+        <button data-category="Account">アカウント</button>
+        <button data-category="Chat">チャット</button>
+        <button data-category="TradeChat">トレード</button>
+      </div>
+
+      <p id="result-count"></p>
+      <div id="rule-list"></div>
+    </section>
+
+    <section id="guide" hidden>
+      <p class="eyebrow">ADMIN PROCEDURES</p>
+      <h1>対応方法一覧<span>.</span></h1>
+      <p class="description">
+        対応方法は今後ここに追加します。
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
