@@ -141,3 +141,12 @@ document.querySelectorAll(".nav").forEach(button => {
 document.getElementById("total").textContent = rules.length;
 
 renderRules();
+
+// Supabase connection
+const SUPABASE_URL = "4CUjLhhP7swrnurUkWkL4g_kwyW5nlF";
+const SUPABASE_PUBLISHABLE_KEY = "dvnw9AVcGYqJ9cnrDJMh-w_pF0uQXKH";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
