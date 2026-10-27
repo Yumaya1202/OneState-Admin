@@ -256,3 +256,25 @@ logoutButton.addEventListener("click", async () => {
 });
 
 showPunishments();
+
+loginForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  authMessage.textContent = "ログイン中...";
+
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  const { error } = await supabaseClient.auth.signInWithPassword({
+    email,
+    password
+  });
+
+  if (error) {
+    authMessage.textContent =
+      "ログインできませんでした。メールアドレスとパスワードを確認してね。";
+    return;
+  }
+
+  authMessage.textContent = "ログインしました。";
+  await showPunishments();
+});
