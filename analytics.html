@@ -135,7 +135,34 @@ const previousWeek = {
 
 const weeklyData = [previousWeek, currentWeek];
 
-// Keep weeks separately so later weeks can be added without overwriting this record.
+const selectedWeek =
+  new URLSearchParams(window.location.search).get("week") === "previous"
+    ? previousWeek
+    : currentWeek;
+
+document.getElementById("kpis").insertAdjacentHTML(
+  "beforebegin",
+  `<div style="margin-bottom:16px">
+    <label for="weekSelect">集計期間：</label>
+    <select id="weekSelect">
+      <option value="current">今週（${currentWeek.start} ～ ${currentWeek.end}）</option>
+      <option value="previous">先週（${previousWeek.start} ～ ${previousWeek.end}）</option>
+    </select>
+  </div>`
+);
+
+document.getElementById("weekSelect").value =
+  selectedWeek === previousWeek ? "previous" : "current";
+
+document.getElementById("weekSelect").addEventListener("change", e => {
+  const url = new URL(window.location.href);
+  if (e.target.value === "previous") {
+    url.searchParams.set("week", "previous");
+  } else {
+    url.searchParams.delete("week");
+  }
+  window.location.href = url.href;
+});
 
 const reasonNames=["対応態度が悪かった","問題が解決されなかった","十分な回答が得られなかった"];
 const fmt=(n,d=0)=>Number(n).toLocaleString("ja-JP",{minimumFractionDigits:d,maximumFractionDigits:d});
