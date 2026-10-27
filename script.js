@@ -152,6 +152,7 @@ const supabaseClient = window.supabase.createClient(
 );
 
 const loginForm = document.getElementById("login-form");
+console.log("ログインフォーム:", loginForm);
 const authMessage = document.getElementById("auth-message");
 const punishmentContent = document.getElementById("punishment-content");
 const punishmentMessage = document.getElementById("punishment-message");
