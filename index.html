@@ -65,6 +65,54 @@
     </section>
   </main>
 
+<section id="punishment-admin">
+  <h2>処罰履歴（スタッフ専用）</h2>
+
+  <form id="login-form">
+    <label for="login-email">メールアドレス</label>
+    <input
+      id="login-email"
+      type="email"
+      autocomplete="username"
+      required
+    >
+
+    <label for="login-password">パスワード</label>
+    <input
+      id="login-password"
+      type="password"
+      autocomplete="current-password"
+      required
+    >
+
+    <button type="submit">ログイン</button>
+  </form>
+
+  <p id="auth-message" role="status"></p>
+
+  <div id="punishment-content" hidden>
+    <button id="logout-button" type="button">ログアウト</button>
+    <h3>処罰履歴一覧</h3>
+    <p id="punishment-message"></p>
+
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>日付</th>
+            <th>対象者</th>
+            <th>処罰内容</th>
+            <th>期間</th>
+            <th>ルール</th>
+            <th>備考</th>
+          </tr>
+        </thead>
+        <tbody id="punishment-rows"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js"></script>
 </body>
