@@ -141,21 +141,3 @@ document.querySelectorAll(".nav").forEach(button => {
 document.getElementById("total").textContent = rules.length;
 
 renderRules();
-
-// Supabase connection
-const SUPABASE_URL = "4CUjLhhP7swrnurUkWkL4g_kwyW5nlF";
-const SUPABASE_PUBLISHABLE_KEY = "dvnw9AVcGYqJ9cnrDJMh-w_pF0uQXKH";
-
-const supabaseClient = window.supabase.createClient(
-  SUPABASE_URL,
-  SUPABASE_PUBLISHABLE_KEY
-);
-
-const loginForm = document.getElementById("login-form");
-console.log("ログインフォーム:", loginForm);
-const authMessage = document.getElementById("auth-message");
-const punishmentContent = document.getElementById("punishment-content");
-const punishmentMessage = document.getElementById("punishment-message");
-const punishmentRows = document.getElementById("punishment-rows");
-const logoutButton = document.getElementById("logout-button");
-
