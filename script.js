@@ -220,6 +220,7 @@ async function showPunishments() {
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   authMessage.textContent = "ログイン中...";
+  console.log("ログイン処理が開始されました");
 
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
