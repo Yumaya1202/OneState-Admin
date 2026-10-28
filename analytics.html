@@ -135,10 +135,43 @@ const previousWeek = {
 
 const weeklyData = [previousWeek, currentWeek];
 
+const params = new URLSearchParams(window.location.search);
+const selectedMode = params.get("week") || "current";
+
 const selectedWeek =
-  new URLSearchParams(window.location.search).get("week") === "previous"
-    ? previousWeek
-    : currentWeek;
+  selectedMode === "previous" ? previousWeek : currentWeek;
+
+const selectedWeeks =
+  selectedMode === "all" ? weeklyData : [selectedWeek];
+
+document.getElementById("kpis").insertAdjacentHTML(
+  "beforebegin",
+  `<div style="margin-bottom:16px">
+    <label for="weekSelect">集計期間：</label>
+    <select id="weekSelect">
+      <option value="current">今週（${currentWeek.start} ～ ${currentWeek.end}）</option>
+      <option value="previous">先週（${previousWeek.start} ～ ${previousWeek.end}）</option>
+      <option value="all">全週（${previousWeek.start} ～ ${currentWeek.end}）</option>
+    </select>
+  </div>`
+);
+
+document.getElementById("weekSelect").value =
+  ["current", "previous", "all"].includes(selectedMode)
+    ? selectedMode
+    : "current";
+
+document.getElementById("weekSelect").addEventListener("change", e => {
+  const url = new URL(window.location.href);
+
+  if (e.target.value === "current") {
+    url.searchParams.delete("week");
+  } else {
+    url.searchParams.set("week", e.target.value);
+  }
+
+  window.location.href = url.href;
+});
 
 document.getElementById("kpis").insertAdjacentHTML(
   "beforebegin",
