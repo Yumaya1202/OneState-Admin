@@ -302,7 +302,9 @@ const all = selectedMode === "all"
 
         return {
           ...x,
-          avg: x.count ? ratingTotal / x.count : 0,
+          avg: x.ratings.reduce((sum, v) => sum + v, 0)
+  ? ratingTotal / x.ratings.reduce((sum, v) => sum + v, 0)
+  : 0,
           lowRate: x.count ? x.low / x.count * 100 : 0
         };
       });
