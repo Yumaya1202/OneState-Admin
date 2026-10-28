@@ -45,7 +45,33 @@ const rules = [
   {code:"Chat16",en:"UnofficialLanguageUsage",ja:"非公用語の使用",pun:"ミュート 10分",note:"全チャンネルでメッセージミュート",category:"Chat"},
   {code:"Chat17",en:"PersonalInfoDisclosure",ja:"個人情報の不正公開",pun:"デバイスBan",note:"デバイスBanのみ・アカウントは利用可能",category:"Chat"},
 
-  {code:"TChat1",en:"TradeChatAbuse",ja:"トレードチャットの乱用",pun:"ミュート 20分",note:"全チャンネルでメッセージミュート",category:"TradeChat"}
+  {code:"TChat1",en:"TradeChatAbuse",ja:"トレードチャットの乱用",pun:"ミュート 20分",note:"全チャンネルでメッセージミュート",category:"TradeChat"},
+    // Abuse
+  { code: "Abuse1", en: "GameModeAbuse", ja: "ゲーム仕様の悪用", pun: "Ban 30日", note: "アカウント", category: "Abuse" },
+  { code: "Abuse2", en: "AfkAbuse", ja: "AFKの悪用", pun: "Ban 3日", note: "アカウント", category: "Abuse" },
+  { code: "Abuse3", en: "SystematicRuleViolation", ja: "ルール不遵守", pun: "Ban 30日", note: "アカウント", category: "Abuse" },
+  { code: "Abuse4", en: "LargeScaleRpInterruption", ja: "大規模なRP妨害", pun: "Ban 24時間", note: "アカウント", category: "Abuse" },
+  { code: "Abuse5", en: "GameplayObstruction", ja: "重要ポイントへのアクセス妨害", pun: "収監 60分", category: "Abuse" },
+
+  // Alert
+  { code: "Alert1", en: "BanBypass", ja: "BAN回避", pun: "デバイスBan", note: "デバイスBanのみ・アカウントは利用可能・期間：Ban 14日", category: "Alert" },
+  { code: "Alert2", en: "ServerDamage", ja: "サーバーへの損害", pun: "デバイスBan", note: "デバイスBanのみ・アカウントは利用可能・999999（永久）", category: "Alert" },
+  { code: "Alert3", en: "UsingCheats", ja: "サードパーティ製ソフトウェア（チート）の使用", pun: "デバイスBan", note: "デバイスBanのみ・アカウントは利用可能", category: "Alert" },
+  { code: "Alert4", en: "EconomyDamage", ja: "サーバー経済への損害", pun: "永久Ban", note: "アカウント・段階的Ban（注記参照）", category: "Alert" },
+  { code: "Alert5", en: "ExternalDefamation", ja: "公式・外部チャンネル上での誹謗中傷", pun: "デバイスBan", note: "デバイスのみ・999999（永久）", category: "Alert" },
+  { code: "Alert6", en: "ThirdPartyPromotion", ja: "第三者コンテンツの宣伝", pun: "デバイスBan", note: "デバイスのみ・14日", category: "Alert" },
+
+  // Media
+  { code: "Media1", en: "Mediastalking", ja: "ライブ配信妨害・撮影妨害", pun: "Ban 1日", note: "1日間のアカウントBan", category: "Media" },
+
+  // Clan
+  { code: "Clan1", en: "GangNameViolation", ja: "ギャング名、説明文、ランク名", pun: "Kick", category: "Clan" },
+  { code: "Clan2", en: "BlockingGangHouse", ja: "ギャングハウス入口マーカーの封鎖", pun: "収監 60分", category: "Clan" },
+  { code: "Clan3", en: "GangChatViolotion", ja: "ギャングチャットルール", pun: "ミュート 240分", note: "全チャンネルでメッセージミュート", category: "Clan" },
+  { code: "Clan4", en: "GangTeaming", ja: "イベントでのギャング同盟禁止", pun: "収監 30分", category: "Clan" },
+  { code: "Clan5", en: "GangTazerAbuse", ja: "ギャングスタンガンの使用", pun: "収監 90分", category: "Clan" },
+  { code: "Clan6", en: "GangRecruitmentGreenZone", ja: "グリーンゾーンでのギャング勧誘", pun: "ミュート 60分", note: "全チャンネルでメッセージミュート", category: "Clan" },
+  { code: "Clan10", en: "GangCurrencyAbuse", ja: "ギャング通貨の不正取得と乱用", pun: "Ban 30日", note: "アカウント", category: "Clan" },
 ];
 
 const search = document.getElementById("search");
