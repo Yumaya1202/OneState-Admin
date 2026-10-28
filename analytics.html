@@ -237,7 +237,20 @@ function renderTable(){
 ["search","serverFilter","sort"].forEach(id=>document.getElementById(id).addEventListener(id==="search"?"input":"change",renderTable));
 document.getElementById("csv").addEventListener("click",()=>{
  const headers=["集計開始日","集計終了日","サーバー","管理者名","活動時間","5★","4★","3★","2★","1★","評価なし","対応数","低評価数","平均評価","低評価率","対応態度が悪かった","問題が解決されなかった","十分な回答が得られなかった"];
-const rows=all.map(x=>[selectedWeek.start,selectedWeek.end,x.server,x.name,x.hours,...x.ratings,x.none,x.count,x.low,x.avg,x.lowRate,...x.reasons]);
+const rows = all.map(x => [
+  x.weekStart,
+  x.weekEnd,
+  x.server,
+  x.name,
+  x.hours,
+  ...x.ratings,
+  x.none,
+  x.count,
+  x.low,
+  x.avg,
+  x.lowRate,
+  ...x.reasons
+]);
  const csv=[headers,...rows].map(row=>row.map(v=>`"${String(v??"").replace(/"/g,'""')}"`).join(",")).join("\r\n");
  const blob=new Blob(["\uFEFF"+csv],{type:"text/csv;charset=utf-8;"});
  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`one-state-performance-${selectedWeek.start}_${selectedWeek.end}.csv`;a.click();URL.revokeObjectURL(a.href);
