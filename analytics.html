@@ -270,7 +270,7 @@ function renderTable(){
  list.sort((a,b)=>sort==="rating"?b.avg-a.avg:sort==="low"?a.lowRate-b.lowRate:sort==="hours"?b.hours-a.hours:b.count-a.count);
  document.getElementById("staffRows").innerHTML=list.map((x,i)=>`<tr><td><span class="rank">${i+1}</span></td><td>${x.server}</td><td>
   <strong>${x.name}</strong>
-  <div class="smallmuted">${x.weekStart} ～ ${x.weekEnd}</div>
+  <div class="smallmuted">${selectedMode === "all" ? "全週合計" : `${x.weekStart} ～ ${x.weekEnd}`}</div>
 </td><td>${fmt(x.hours,1)} h</td>${x.ratings.map(v=>`<td>${fmt(v)}</td>`).join("")}<td>${fmt(x.none)}</td><td>${fmt(x.count)}</td><td>${fmt(x.low)}</td><td><strong>${fmt(x.avg,2)}</strong></td><td><span class="pill ${x.lowRate>=20?"warn":x.lowRate>=12?"mid":""}">${fmt(x.lowRate,2)}%</span></td></tr>`).join("")||'<tr><td colspan="14" class="empty">該当するスタッフはいません</td></tr>';
 }
 ["search","serverFilter","sort"].forEach(id=>document.getElementById(id).addEventListener(id==="search"?"input":"change",renderTable));
