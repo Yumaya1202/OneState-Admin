@@ -186,13 +186,64 @@ const fmt = (n, d = 0) =>
     maximumFractionDigits: d
   });
 
-const all = selectedWeeks.flatMap(week =>
-  week.staff.map(x => ({
-    ...x,
-    weekStart: week.start,
-    weekEnd: week.end
-  }))
-);
+
+const all = selectedMode === "all"
+  ? (() => {
+      const staffMap = new Map();
+
+      selectedWeeks.forEach(week => {
+        week.staff.forEach(x => {
+          const key = `${x.server}|${x.name}`;
+
+          if (!staffMap.has(key)) {
+            staffMap.set(key, {
+              ...x,
+              weekStart: previousWeek.start,
+              weekEnd: currentWeek.end,
+              hours: 0,
+              ratings: [0, 0, 0, 0, 0],
+              none: 0,
+              count: 0,
+              low: 0,
+              reasons: [0, 0, 0]
+            });
+          }
+
+          const total = staffMap.get(key);
+
+          total.hours += x.hours;
+          total.none += x.none;
+          total.count += x.count;
+          total.low += x.low;
+
+          x.ratings.forEach((v, i) => {
+            total.ratings[i] += v;
+          });
+
+          x.reasons.forEach((v, i) => {
+            total.reasons[i] += v;
+          });
+        });
+      });
+
+      return [...staffMap.values()].map(x => {
+        const ratingTotal = x.ratings.reduce(
+          (sum, v, i) => sum + v * (5 - i), 0
+        );
+
+        return {
+          ...x,
+          avg: x.count ? ratingTotal / x.count : 0,
+          lowRate: x.count ? x.low / x.count * 100 : 0
+        };
+      });
+    })()
+  : selectedWeek.staff.map(x => ({
+      ...x,
+      weekStart: selectedWeek.start,
+      weekEnd: selectedWeek.end
+    }));
+
 
 const totalCount=all.reduce((s,x)=>s+x.count,0);
 const totalLow=all.reduce((s,x)=>s+x.low,0);
