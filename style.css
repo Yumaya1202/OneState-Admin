@@ -215,10 +215,10 @@ h1 span {
 .punishment {
   color: #d9e7fa;
   background: #1a273b;
-  border: 1px solid #30415b;
-  padding: 8px 10px;
+  border: 2px solid #30415b;
+  padding: 10px 13px;
   border-radius: 6px;
-  font-size: 11px;
+  font-size: 16px;
   white-space: nowrap;
 }
 
