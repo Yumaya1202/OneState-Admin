@@ -272,3 +272,39 @@ h1 span {
     white-space: normal;
   }
 }
+
+
+/* Liquid Glass風のデザイン */
+.sidebar {
+  background: rgba(13, 21, 37, 0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  backdrop-filter: blur(20px) saturate(160%);
+  border-right: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.rule {
+  background: rgba(30, 45, 67, 0.55);
+  -webkit-backdrop-filter: blur(12px) saturate(145%);
+  backdrop-filter: blur(12px) saturate(145%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.rule:hover {
+  background: rgba(50, 72, 102, 0.68);
+  border-color: rgba(160, 205, 255, 0.38);
+  transform: translateY(-2px);
+}
+
+.punishment {
+  background: rgba(80, 120, 170, 0.18);
+  border: 1px solid rgba(190, 220, 255, 0.24);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
