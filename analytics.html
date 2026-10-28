@@ -12,6 +12,119 @@
 .section-title{font-size:15px;font-weight:800;margin:27px 0 13px;display:flex;justify-content:space-between;align-items:center;gap:12px}.section-title small{font-size:11px;color:var(--muted);font-weight:500}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:19px;box-shadow:0 3px 12px rgba(24,43,78,.025);min-width:0}.kpi-label{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:7px}.dot{width:8px;height:8px;border-radius:50%;background:var(--blue)}.kpi-value{font-size:29px;font-weight:800;letter-spacing:-.8px;margin:13px 0 5px}.kpi-note{font-size:11px;color:var(--muted)}.twocol{grid-template-columns:1.15fr .85fr}.servercards{grid-template-columns:repeat(2,minmax(0,1fr))}.server-name{font-size:13px;font-weight:800}.server-rate{font-size:25px;font-weight:800;margin:12px 0 5px}.bar{height:8px;border-radius:20px;background:#edf1f7;overflow:hidden;margin:13px 0 8px}.bar>span{display:block;height:100%;border-radius:20px;background:var(--blue)}.smallmuted{font-size:11px;color:var(--muted)}.chart{display:flex;align-items:flex-end;gap:12px;height:185px;padding:18px 5px 0;border-bottom:1px solid var(--line)}.barcol{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:8px}.barvalue{font-size:10px;color:#64718a}.chartbar{width:min(36px,70%);min-height:3px;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#6f9cff,#3978f6)}.barlabel{font-size:10px;color:var(--muted);white-space:nowrap}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px;background:#fff}table{border-collapse:collapse;width:100%;font-size:12px;white-space:nowrap}th{background:#f8faff;color:#68758c;font-size:10px;text-align:left;letter-spacing:.3px;padding:13px 14px;font-weight:750;border-bottom:1px solid var(--line)}td{padding:12px 14px;border-bottom:1px solid #eef1f6}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#f8faff}.rank{display:inline-grid;place-items:center;width:23px;height:23px;border-radius:7px;background:#edf3ff;color:#3869d7;font-weight:800}.pill{display:inline-block;border-radius:20px;padding:4px 8px;font-size:10px;font-weight:700;background:#edf8f3;color:#12835c}.pill.warn{background:#fff0f0;color:#c54a58}.pill.mid{background:#fff6e8;color:#a66a13}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.control,button.action{border:1px solid var(--line);background:#fff;border-radius:8px;padding:9px 11px;font-size:12px;color:#4f5c72}button.action{cursor:pointer;font-weight:700}.action.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.reason-list{display:grid;gap:15px}.reason-row{display:grid;grid-template-columns:minmax(150px,1fr) 2fr 38px;gap:12px;align-items:center;font-size:12px}.reason-track{height:9px;background:#edf1f7;border-radius:20px;overflow:hidden}.reason-track span{display:block;height:100%;background:#e46b75;border-radius:20px}.note{font-size:11px;color:var(--muted);line-height:1.7;margin-top:12px}.empty{padding:25px;text-align:center;color:var(--muted)}.hidden{display:none!important}
 @media(max-width:1050px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.twocol{grid-template-columns:1fr}.sidebar{width:210px}}
 @media(max-width:700px){.app{display:block}.sidebar{width:100%;padding:18px 14px}.brand{font-size:18px}.subtitle{margin-bottom:14px}.sidebar nav{display:flex;gap:5px;overflow:auto}.navlabel,.sidebar-foot{display:none}.nav{white-space:nowrap;width:auto;flex:1;padding:10px 9px;font-size:11px}.main{padding:22px 13px}.topline{align-items:flex-start;flex-direction:column}.h1{font-size:23px}.kpis{gap:9px}.card{padding:14px}.kpi-value{font-size:24px}.servercards{grid-template-columns:1fr 1fr}.reason-row{grid-template-columns:1fr 1fr 30px;gap:7px}.reason-row span:first-child{font-size:10px}}
+
+/* ===== Liquid Glass appearance ===== */
+
+:root {
+  --bg: #eaf0fa;
+  --card: rgba(255, 255, 255, 0.62);
+  --line: rgba(255, 255, 255, 0.78);
+  --text: #182338;
+  --muted: #71809a;
+}
+
+/* 背景に柔らかな光を追加 */
+body {
+  background:
+    radial-gradient(ellipse at 12% 5%, rgba(128, 176, 255, 0.30), transparent 38%),
+    radial-gradient(ellipse at 88% 28%, rgba(172, 198, 255, 0.28), transparent 35%),
+    linear-gradient(135deg, #eef3fc, #e5ecf8 55%, #f3f6fc);
+  background-attachment: fixed;
+}
+
+/* サイドバーを半透明ガラスに */
+.sidebar {
+  background: rgba(16, 27, 51, 0.82);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  border-right: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 8px 0 35px rgba(33, 55, 95, 0.08);
+}
+
+/* KPI・グラフ・サーバーカード */
+.card {
+  background: rgba(255, 255, 255, 0.58);
+  -webkit-backdrop-filter: blur(20px) saturate(155%);
+  backdrop-filter: blur(20px) saturate(155%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 10px 30px rgba(43, 68, 112, 0.07);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.card:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 14px 34px rgba(43, 68, 112, 0.11);
+}
+
+/* 期間選択・検索・並べ替え */
+.period,
+.control,
+button.action {
+  background: rgba(255, 255, 255, 0.58);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* CSVボタンは青いガラス風 */
+button.action.primary {
+  background: linear-gradient(
+    135deg,
+    rgba(76, 137, 255, 0.95),
+    rgba(48, 102, 226, 0.95)
+  );
+  border-color: rgba(255, 255, 255, 0.55);
+  color: white;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 5px 15px rgba(57, 120, 246, 0.20);
+}
+
+/* スタッフ表もガラスパネルに */
+.tablewrap {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(43, 68, 112, 0.06);
+}
+
+th {
+  background: rgba(239, 245, 255, 0.72);
+}
+
+tbody tr:hover {
+  background: rgba(209, 226, 255, 0.32);
+}
+
+/* グラフの背景をなじませる */
+.bar {
+  background: rgba(213, 224, 242, 0.68);
+}
+
+.reason-track {
+  background: rgba(213, 224, 242, 0.68);
+}
+
+/* 期間表示を少し上品に */
+.period {
+  color: #526078;
+  padding: 12px 15px;
+}
+
+/* 動きを控えめにしたい環境ではアニメーションを抑える */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}
 </style>
 </head>
 <body>
