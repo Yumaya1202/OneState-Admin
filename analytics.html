@@ -260,6 +260,13 @@ const fmt = (n, d = 0) =>
   });
 
 
+const fmt = (n, d = 0) =>
+  Number(n).toLocaleString("ja-JP", {
+    minimumFractionDigits: d,
+    maximumFractionDigits: d
+  });
+
+
 const all = selectedMode === "all"
   ? (() => {
       const staffMap = new Map();
@@ -281,6 +288,7 @@ const all = selectedMode === "all"
               reasons: [0, 0, 0]
             });
           }
+
 
           const total = staffMap.get(key);
 
